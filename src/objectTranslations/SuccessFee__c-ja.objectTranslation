@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>採用決定</value>
+    </caseValues>
+    <fields>
+        <label><!-- 採用決定日 --></label>
+        <name>AdoptionDecisionDay__c</name>
+    </fields>
+    <fields>
+        <label><!-- 採用年度 --></label>
+        <name>AdoptionYear__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商談 --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- 採用決定 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 学生ID --></label>
+        <name>StudentID__c</name>
+    </fields>
+    <layouts>
+        <layout>成功報酬レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

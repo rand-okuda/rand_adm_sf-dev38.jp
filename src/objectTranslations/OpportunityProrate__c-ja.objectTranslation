@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>商談按分</value>
+    </caseValues>
+    <fields>
+        <help><!-- 金額と同値。 --></help>
+        <label><!-- ￥￥_金額算出 --></label>
+        <name>AmountCalcd__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分金額や按分金額端数を算出する元になる金額。
+空白の場合に、商談商品の金額に按分の割合を適用し代入。 --></help>
+        <label><!-- 金額 --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商談の完了予定日と同値。 --></help>
+        <label><!-- ￥￥_完了予定日転記 --></label>
+        <name>CloseDateFixed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商談商品 --></label>
+        <name>OpportunityLineItem__c</name>
+        <relationshipLabel><!-- 商談按分 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 商談 --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- 商談按分 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 按分 --></label>
+        <name>Prorate__c</name>
+        <relationshipLabel><!-- 商談按分 --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 按分金額と同値。 --></help>
+        <label><!-- ￥￥_按分金額転記 --></label>
+        <name>SplitAmountFixed__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分金額端数と同値。 --></help>
+        <label><!-- ￥￥_按分金額端数転記 --></label>
+        <name>SplitAmountFractionFixed__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分後の金額の1円の位の端数。 --></help>
+        <label><!-- 按分金額端数 --></label>
+        <name>SplitAmountFraction__c</name>
+    </fields>
+    <fields>
+        <help><!-- 1円の位の端数を除いた按分後の金額。 --></help>
+        <label><!-- 按分金額 --></label>
+        <name>SplitAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分終了日と同値。 --></help>
+        <label><!-- ￥￥_按分終了日転記 --></label>
+        <name>SplitEndDateFixed__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分開始日から按分の按分年数は経過した後の按分の按分終了月の最終日。 --></help>
+        <label><!-- 按分終了日 --></label>
+        <name>SplitEndDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分開始日と同値。 --></help>
+        <label><!-- ￥￥_按分開始日転記 --></label>
+        <name>SplitStartDateFixed__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商談の完了予定日の同月初日。 --></help>
+        <label><!-- 按分開始日 --></label>
+        <name>SplitStartDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品の按分回数か、商品の按分回数が空白の場合は、按分開始日と按分終了日の間の月数。 --></help>
+        <label><!-- 按分回数 --></label>
+        <name>SplitTimes__c</name>
+    </fields>
+    <layouts>
+        <layout>商談按分レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 経過収益情報 --></label>
+            <section>経過収益情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

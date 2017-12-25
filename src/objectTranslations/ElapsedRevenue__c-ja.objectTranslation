@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>経過収益</value>
+    </caseValues>
+    <fields>
+        <help><!-- 商談按分の按分金額。
+最終月は商談按分の按分金額＋按分金額端数。 --></help>
+        <label><!-- 按分金額 --></label>
+        <name>AllocationAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商談按分 --></label>
+        <name>OpportunityProrate__c</name>
+        <relationshipLabel><!-- 経過収益 --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 商談按分の金額。 --></help>
+        <label><!-- 前受金額 --></label>
+        <name>PrepaymentAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- 経過収益の０：ゼロから始まる連番。 --></help>
+        <label><!-- 進捗月数 --></label>
+        <name>ProgressMonth__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分開始日から進捗月数が経過した日付。 --></help>
+        <label><!-- 計上日 --></label>
+        <name>RecordingDate__c</name>
+    </fields>
+    <layouts>
+        <layout>経過収益レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 追加情報 --></label>
+            <section>追加情報</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

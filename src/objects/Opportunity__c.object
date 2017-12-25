@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>取引先</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Opportunitys</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AgreementStartDateFixed__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_契約開始日転記</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>AgreementStartDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(MONTH( CloseDate__c ) = 12
+  , DATE(YEAR(CloseDate__c )+1, 1, 1)
+  , DATE(YEAR(CloseDate__c ), MONTH(CloseDate__c )+1, 1)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>契約開始日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Attribute__c</fullName>
+        <externalId>false</externalId>
+        <label>属性</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>OpportunityAttribute</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CloseDate__c</fullName>
+        <externalId>false</externalId>
+        <label>完了予定日</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ClosingDateCalculation__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+ TEXT(Account__r.Payment__c) = &apos;co&apos;  ,
+ 0 ,
+ IF (
+ TEXT(Account__r.Payment__c) = &apos;1m&apos;  ,
+ 1,
+ IF (
+ TEXT(Account__r.Payment__c) = &apos;2m&apos;  ,
+ 2,
+ IF (
+ TEXT(Account__r.Payment__c) = &apos;ot&apos;  ,
+ null,
+ null
+) 
+) 
+) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_締日算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monitoring__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>請求入金監視</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PaymentDueDateFixed__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_支払期日転記</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PaymentDueDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ MONTH ( AgreementStartDateFixed__c  ) + ClosingDateCalculation__c &lt;= 11, 
+
+Date(
+ YEAR ( AgreementStartDateFixed__c  ),
+ MONTH ( AgreementStartDateFixed__c  ) + ClosingDateCalculation__c + 1 ,
+ 1
+ ) -1, 
+
+Date(
+ YEAR ( AgreementStartDateFixed__c  ) + 1,
+ MONTH ( AgreementStartDateFixed__c  ) + ClosingDateCalculation__c -11,
+ 1
+ ) -1
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>支払期日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ProjectCode__c</fullName>
+        <displayFormat>XX-{0000}YY-ZZ</displayFormat>
+        <externalId>false</externalId>
+        <label>プロジェクトコード</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Prorating__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Triggerでレコード更新時の処理起動の判定に使用。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>チェックONで、経過収益を作成。
+チェックOFFで、経過収益を削除。</inlineHelpText>
+        <label>按分実行</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SalesPerson__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>担当営業</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunitys</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>商談</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>ProjectCode__c</columns>
+        <columns>Prorating__c</columns>
+        <columns>Monitoring__c</columns>
+        <columns>CloseDate__c</columns>
+        <columns>AgreementStartDate__c</columns>
+        <columns>PaymentDueDate__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <nameField>
+        <displayFormat>商談-{0000}</displayFormat>
+        <label>商談名</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>ProjectCode__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CloseDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AgreementStartDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PaymentDueDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Monitoring__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Prorating__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SalesPerson__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CloseDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Attribute__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AgreementStartDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PaymentDueDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Prorating__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SalesPerson__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CloseDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Attribute__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AgreementStartDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PaymentDueDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Prorating__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SalesPerson__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

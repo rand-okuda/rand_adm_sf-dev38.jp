@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>商談商品</value>
+    </caseValues>
+    <fields>
+        <label><!-- 採用年度 --></label>
+        <name>AdoptionYear__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求ステータス --></label>
+        <name>BillingStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- ③顧客属性コード --></label>
+        <name>CustomerAttributeCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 提供日 --></label>
+        <name>DateOfOffer__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_督促社内アラート日時 --></label>
+        <name>DunningAlertDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_督促確認期限 --></label>
+        <name>DunningConfirmDueDateFixed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 督促確認期限 --></label>
+        <name>DunningConfirmDueDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- 内定辞退発生 --></label>
+        <name>JobOfferRefusal__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_OBCD001_区切 --></label>
+        <name>OBCD001__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商談PJコード --></label>
+        <name>OpportunityPJCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商談 --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- 商談商品 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ④受注年度コード --></label>
+        <name>OrderedYearCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ①プロジェクトコード --></label>
+        <name>PJ_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT006_プロジェクト略称 --></label>
+        <name>PRJT006__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT007_用途区分コード --></label>
+        <name>PRJT007__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT008_完成時の処理コード --></label>
+        <name>PRJT008__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT009_売上高の計上方法コード --></label>
+        <name>PRJT009__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT010_完成区分コード --></label>
+        <name>PRJT010__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT013_予定期間（開始） --></label>
+        <name>PRJT013__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_PRJT014_予定期間（終了） --></label>
+        <name>PRJT014__c</name>
+    </fields>
+    <fields>
+        <label><!-- 入金確認済 --></label>
+        <name>PaymentConfirmed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品 --></label>
+        <name>Product2__c</name>
+        <relationshipLabel><!-- 商談商品 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_プロジェクトコード枝番 --></label>
+        <name>ProjectCodBranch__c</name>
+    </fields>
+    <fields>
+        <label><!-- 数量 --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- ②地域コード --></label>
+        <name>RegionCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 担当営業メールアドレス --></label>
+        <name>SalesPersonMail__c</name>
+    </fields>
+    <fields>
+        <label><!-- ⑥サービスコード --></label>
+        <name>ServiceCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ⑤サービス対象年度コード --></label>
+        <name>ServiceYearCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 学生ID --></label>
+        <name>StudentID__c</name>
+    </fields>
+    <fields>
+        <label><!-- 採用決定 --></label>
+        <name>SuccessFee__c</name>
+        <relationshipLabel><!-- 商談商品 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 合計金額（税込） --></label>
+        <name>TotalPriceIncludeTax__c</name>
+    </fields>
+    <fields>
+        <label><!-- 合計金額 --></label>
+        <name>TotalPrice__c</name>
+    </fields>
+    <layouts>
+        <layout>商談商品レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- コード情報 --></label>
+            <section>コード情報</section>
+        </sections>
+        <sections>
+            <label><!-- 採用情報 --></label>
+            <section>採用情報</section>
+        </sections>
+        <sections>
+            <label><!-- 督促情報 --></label>
+            <section>督促情報</section>
+        </sections>
+        <sections>
+            <label><!-- 追加情報 --></label>
+            <section>追加情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- 督促社内アラート --></label>
+        <name>DunningAlert</name>
+    </quickActions>
+</CustomObjectTranslation>

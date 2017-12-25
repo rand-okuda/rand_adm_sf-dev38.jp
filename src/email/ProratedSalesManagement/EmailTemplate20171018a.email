@@ -1,0 +1,3 @@
+各位
+{!OpportunityLineItem__c.Name} において滞留が発生しております。
+先方へ状況を確認の上、{!OpportunityLineItem__c.DunningConfirmDueDate__c}までに経理へ状況の連絡をお願いしますm(__)m

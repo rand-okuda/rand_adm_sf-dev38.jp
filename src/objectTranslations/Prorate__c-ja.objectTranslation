@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>按分</value>
+    </caseValues>
+    <fields>
+        <help><!-- 商談商品を複数の期間と金額で按分する場合の金額を算出する元になる割合（パーセント）。 --></help>
+        <label><!-- 金額割合 --></label>
+        <name>AmountRatio__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品 --></label>
+        <name>Product2__c</name>
+        <relationshipLabel><!-- 按分 --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 按分終了日を算出する元になる月。
+１～１２までの整数が入力必須。 --></help>
+        <label><!-- 按分終了月 --></label>
+        <name>SplitEndMonth__c</name>
+    </fields>
+    <fields>
+        <help><!-- 按分回数を算出する元になる年数。
+整数必須。 --></help>
+        <label><!-- 按分年数 --></label>
+        <name>SplitYears__c</name>
+    </fields>
+    <layouts>
+        <layout>按分レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- 按分終了月は１～１２の数字を入力してください。 --></errorMessage>
+        <name>SplitEndMonthBetween1to12Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 按分年数は１以上の整数を入力してください。 --></errorMessage>
+        <name>SplitYears1yearorMoreRequired</name>
+    </validationRules>
+</CustomObjectTranslation>

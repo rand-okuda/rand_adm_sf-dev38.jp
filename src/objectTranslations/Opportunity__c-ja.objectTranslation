@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>商談</value>
+    </caseValues>
+    <fields>
+        <label><!-- 取引先 --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- 商談 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_契約開始日転記 --></label>
+        <name>AgreementStartDateFixed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 契約開始日 --></label>
+        <name>AgreementStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- 属性 --></label>
+        <name>Attribute__c</name>
+    </fields>
+    <fields>
+        <label><!-- 完了予定日 --></label>
+        <name>CloseDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_締日算出 --></label>
+        <name>ClosingDateCalculation__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求入金監視 --></label>
+        <name>Monitoring__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_支払期日転記 --></label>
+        <name>PaymentDueDateFixed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 支払期日 --></label>
+        <name>PaymentDueDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- プロジェクトコード --></label>
+        <name>ProjectCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- チェックONで、経過収益を作成。
+チェックOFFで、経過収益を削除。 --></help>
+        <label><!-- 按分実行 --></label>
+        <name>Prorating__c</name>
+    </fields>
+    <fields>
+        <label><!-- 担当営業 --></label>
+        <name>SalesPerson__c</name>
+        <relationshipLabel><!-- 商談 --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>商談レイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- レポート --></label>
+            <section>レポート</section>
+        </sections>
+        <sections>
+            <label><!-- 追加情報 --></label>
+            <section>追加情報</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

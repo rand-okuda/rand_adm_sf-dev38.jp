@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AllocationAmount__c</fullName>
+        <description>進捗月数が０の場合は、前受のため空白。
+進捗月数が０より大きい場合で、
+進捗月数と按分回数が一致する場合は、最終月のため、按分金額に端数を加算し出力。
+進捗月数と按分回数が一致せず、按分回数未満の場合は、按分金額を出力。</description>
+        <externalId>false</externalId>
+        <formula>IF ( ProgressMonth__c  &gt; 0,
+
+ IF (ProgressMonth__c = OpportunityProrate__r.SplitTimes__c, 
+  OpportunityProrate__r.SplitAmountFixed__c + OpportunityProrate__r.SplitAmountFractionFixed__c
+  ,
+  IF (ProgressMonth__c &lt; OpportunityProrate__r.SplitTimes__c, 
+   OpportunityProrate__r.SplitAmountFixed__c
+   ,
+   null
+   )
+  )
+
+ , 
+
+ null
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>商談按分の按分金額。
+最終月は商談按分の按分金額＋按分金額端数。</inlineHelpText>
+        <label>按分金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OpportunityProrate__c</fullName>
+        <externalId>false</externalId>
+        <label>商談按分</label>
+        <referenceTo>OpportunityProrate__c</referenceTo>
+        <relationshipLabel>経過収益</relationshipLabel>
+        <relationshipName>ElapsedRevenues</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>PrepaymentAmount__c</fullName>
+        <description>進捗月数が０より大きい場合は、按分のため空白。
+進捗月数が０の場合は、商談按分の金額を出力。</description>
+        <externalId>false</externalId>
+        <formula>IF ( ProgressMonth__c &gt; 0 , 
+
+ null
+, 
+ OpportunityProrate__r.Amount__c 
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>商談按分の金額。</inlineHelpText>
+        <label>前受金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ProgressMonth__c</fullName>
+        <description>Triggerによりレコード作成時に連番を代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>経過収益の０：ゼロから始まる連番。</inlineHelpText>
+        <label>進捗月数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RecordingDate__c</fullName>
+        <description>進捗月数が０の場合は、按分開始日を出力。
+進捗月数が０より大きい場合は、按分開始日からの進捗月数が経過した日付を出力。</description>
+        <externalId>false</externalId>
+        <formula>IF ( ProgressMonth__c  &gt; 0,
+
+ DATE(
+  YEAR(OpportunityProrate__r.SplitStartDateFixed__c  + ( ProgressMonth__c - 1 ) * 31) ,
+  MONTH(OpportunityProrate__r.SplitStartDateFixed__c  + ( ProgressMonth__c - 1 ) * 31) ,
+  1
+ )
+ ,
+ OpportunityProrate__r.SplitStartDateFixed__c
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>按分開始日から進捗月数が経過した日付。</inlineHelpText>
+        <label>計上日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>経過収益</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>OpportunityProrate__c</columns>
+        <columns>RecordingDate__c</columns>
+        <columns>AllocationAmount__c</columns>
+        <columns>PrepaymentAmount__c</columns>
+        <columns>ProgressMonth__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <nameField>
+        <displayFormat>経過収益-{0000}</displayFormat>
+        <label>経過収益名</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>RecordingDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AllocationAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PrepaymentAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ProgressMonth__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>RecordingDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AllocationAmount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PrepaymentAmount__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>RecordingDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AllocationAmount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PrepaymentAmount__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AmountCalcd__c</fullName>
+        <description>プロセスビルダーにより参照。</description>
+        <externalId>false</externalId>
+        <formula>OpportunityLineItem__r.TotalPriceIncludeTax__c   *  Prorate__r.AmountRatio__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>金額と同値。</inlineHelpText>
+        <label>￥￥_金額算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <description>項目がNull（空白）の場合に、プロセスビルダーにより、商談商品の金額と按分の金額割合を乗算し出力。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>按分金額や按分金額端数を算出する元になる金額。
+空白の場合に、商談商品の金額に按分の割合を適用し代入。</inlineHelpText>
+        <label>金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CloseDateFixed__c</fullName>
+        <description>プロセスビルダーにより代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>商談の完了予定日と同値。</inlineHelpText>
+        <label>￥￥_完了予定日転記</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>OpportunityLineItem__c</fullName>
+        <externalId>false</externalId>
+        <label>商談商品</label>
+        <referenceTo>OpportunityLineItem__c</referenceTo>
+        <relationshipLabel>商談按分</relationshipLabel>
+        <relationshipName>OpportunityProrates</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>商談</label>
+        <referenceTo>Opportunity__c</referenceTo>
+        <relationshipLabel>商談按分</relationshipLabel>
+        <relationshipName>OpportunityProrates</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Prorate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>按分</label>
+        <referenceTo>Prorate__c</referenceTo>
+        <relationshipLabel>商談按分</relationshipLabel>
+        <relationshipName>OpportunityProrates</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SplitAmountFixed__c</fullName>
+        <description>プロセスビルダーにより代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>按分金額と同値。</inlineHelpText>
+        <label>￥￥_按分金額転記</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SplitAmountFractionFixed__c</fullName>
+        <description>プロセスビルダーにより代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>按分金額端数と同値。</inlineHelpText>
+        <label>￥￥_按分金額端数転記</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SplitAmountFraction__c</fullName>
+        <description>金額を按分回数で除算した乗除に按分回数を乗算した結果。</description>
+        <externalId>false</externalId>
+        <formula>MOD(Amount__c /  SplitTimes__c, 1) * SplitTimes__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>按分後の金額の1円の位の端数。</inlineHelpText>
+        <label>按分金額端数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SplitAmount__c</fullName>
+        <description>金額が按分回数で割り切れない場合は、金額を按分回数で除算し、剰余を減算し出力。
+金額が按分回数で割り切れる場合は、金額を按分回数で除算し出力。</description>
+        <externalId>false</externalId>
+        <formula>IF (MOD(Amount__c /  SplitTimes__c, 1)  &gt; 0,
+
+ Amount__c / SplitTimes__c - MOD(Amount__c /  SplitTimes__c, 1 )
+,
+ Amount__c / SplitTimes__c
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>1円の位の端数を除いた按分後の金額。</inlineHelpText>
+        <label>按分金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SplitEndDateFixed__c</fullName>
+        <description>プロセスビルダーにより代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>按分終了日と同値。</inlineHelpText>
+        <label>￥￥_按分終了日転記</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SplitEndDate__c</fullName>
+        <description>按分終了月が12月の場合は、按分開始日の按分年数の経過後の1月1日の前日（12月31日）を出力。
+按分終了月が12月以外の場合で、
+按分開始月が按分終了月以前の場合、按分開始日の按分年数の経過後の前年の按分終了月の翌月初の前日（按分終了月の月末）を出力。
+按分開始月が按分終了月以後の場合、按分開始日の按分年数の経過後の按分終了月の翌月初の前日（按分終了月の月末）を出力。</description>
+        <externalId>false</externalId>
+        <formula>IF ( Prorate__r.SplitEndMonth__c &lt;&gt; 12, 
+
+ IF ( MONTH( SplitStartDateFixed__c )  &lt;=  Prorate__r.SplitEndMonth__c ,
+  DATE(
+  YEAR( SplitStartDateFixed__c ) + Prorate__r.SplitYears__c  - 1,
+  Prorate__r.SplitEndMonth__c + 1,
+  1
+  ) - 1
+ ,
+  DATE(
+  YEAR( SplitStartDateFixed__c ) + Prorate__r.SplitYears__c ,
+  Prorate__r.SplitEndMonth__c + 1,
+  1
+  ) - 1
+ )
+
+,
+  DATE(
+  YEAR( SplitStartDateFixed__c ) + Prorate__r.SplitYears__c,
+  1,
+  1
+  ) - 1
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>按分開始日から按分の按分年数は経過した後の按分の按分終了月の最終日。</inlineHelpText>
+        <label>按分終了日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SplitStartDateFixed__c</fullName>
+        <description>プロセスビルダーにより代入。</description>
+        <externalId>false</externalId>
+        <inlineHelpText>按分開始日と同値。</inlineHelpText>
+        <label>￥￥_按分開始日転記</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SplitStartDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE(
+
+ YEAR( CloseDateFixed__c ), 
+ MONTH( CloseDateFixed__c ), 
+ 1
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>商談の完了予定日の同月初日。</inlineHelpText>
+        <label>按分開始日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SplitTimes__c</fullName>
+        <description>入力済の商品の按分回数を優先で出力。
+按分開始日と按分終了日の日数を３１で除算し整数に丸めた結果。</description>
+        <externalId>false</externalId>
+        <formula>IF ( NOT( ISBLANK( Prorate__r.Product2__r.SplitTimes__c ) ) , 
+
+ Prorate__r.Product2__r.SplitTimes__c
+ , 
+ ROUND( ( SplitEndDateFixed__c - SplitStartDateFixed__c ) / 31 , 0 )
+
+)</formula>
+        <inlineHelpText>商品の按分回数か、商品の按分回数が空白の場合は、按分開始日と按分終了日の間の月数。</inlineHelpText>
+        <label>按分回数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>商談按分</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Prorate__c</columns>
+        <columns>SplitAmount__c</columns>
+        <columns>SplitAmountFraction__c</columns>
+        <columns>SplitStartDate__c</columns>
+        <columns>SplitEndDate__c</columns>
+        <columns>SplitTimes__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <nameField>
+        <displayFormat>商談按分-{0000}</displayFormat>
+        <label>商談按分名</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>Amount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SplitStartDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SplitEndDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SplitTimes__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SplitAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SplitAmountFraction__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Opportunity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Prorate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SplitStartDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SplitEndDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SplitTimes__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Prorate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SplitStartDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SplitEndDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SplitTimes__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>
