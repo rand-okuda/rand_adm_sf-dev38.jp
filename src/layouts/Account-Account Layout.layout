@@ -80,7 +80,7 @@
                 <reportChartComponent>
                     <cacheData>false</cacheData>
                     <contextFilterableField>Account.Id</contextFilterableField>
-                    <error>レポート、レポートタイプまたはグラフが削除されたため、レポートグラフを表示できません。</error>
+                    <error>レポートグラフを表示するには、「レポート実行」権限とレポートフォルダへのアクセス権の両方が必要です。</error>
                     <hideOnError>true</hideOnError>
                     <includeContext>true</includeContext>
                     <reportName>00O7F000004hvxP</reportName>
