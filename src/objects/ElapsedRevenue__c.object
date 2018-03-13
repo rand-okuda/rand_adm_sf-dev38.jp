@@ -143,11 +143,20 @@
         <externalId>false</externalId>
         <formula>IF ( ProgressMonth__c  &gt; 0,
 
+ IF (MONTH(OpportunityProrate__r.SplitStartDateFixed__c) + MOD((ProgressMonth__c - 1) ,12) &gt; 12,
  DATE(
-  YEAR(OpportunityProrate__r.SplitStartDateFixed__c  + ( ProgressMonth__c - 1 ) * 31) ,
-  MONTH(OpportunityProrate__r.SplitStartDateFixed__c  + ( ProgressMonth__c - 1 ) * 31) ,
+  YEAR(OpportunityProrate__r.SplitStartDateFixed__c) + FLOOR((ProgressMonth__c -1) / 12) + 1 ,
+  MONTH(OpportunityProrate__r.SplitStartDateFixed__c) + MOD((ProgressMonth__c - 1) ,12) - 12 , 
   1
  )
+ ,
+ DATE(
+  YEAR(OpportunityProrate__r.SplitStartDateFixed__c) + FLOOR((ProgressMonth__c -1) / 12) ,
+  MONTH(OpportunityProrate__r.SplitStartDateFixed__c) + MOD((ProgressMonth__c - 1) ,12) , 
+  1
+ )
+ )
+
  ,
  OpportunityProrate__r.SplitStartDateFixed__c
 

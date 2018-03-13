@@ -214,7 +214,7 @@
         <externalId>false</externalId>
         <formula>IF ( Prorate__r.SplitEndMonth__c &lt;&gt; 12, 
 
- IF ( MONTH( SplitStartDateFixed__c )  &lt;=  Prorate__r.SplitEndMonth__c ,
+ IF ( MONTH( SplitStartDateFixed__c )  &lt;= Prorate__r.SplitEndMonth__c ,
   DATE(
   YEAR( SplitStartDateFixed__c ) + Prorate__r.SplitYears__c  - 1,
   Prorate__r.SplitEndMonth__c + 1,
@@ -282,7 +282,10 @@
 
  Prorate__r.Product2__r.SplitTimes__c
  , 
- ROUND( ( SplitEndDateFixed__c - SplitStartDateFixed__c ) / 31 , 0 )
+ ( YEAR( SplitEndDateFixed__c )  * 12 +  MONTH( SplitEndDateFixed__c ) ) 
+ -  
+ ( YEAR( SplitStartDateFixed__c )  * 12 +  MONTH( SplitStartDateFixed__c ) ) 
+ + 1
 
 )</formula>
         <inlineHelpText>商品の按分回数か、商品の按分回数が空白の場合は、按分開始日と按分終了日の間の月数。</inlineHelpText>
